@@ -9,7 +9,6 @@ export const TopNav: React.FC = () => {
         <div className="flex gap-6 lg:gap-8 text-[11px] font-semibold tracking-wider text-neutral-400 mb-1 lg:relative lg:top-[1px] justify-center lg:justify-start w-full lg:w-auto">
           <NavLink label="Gallery" />
           <NavLink label="Moments" isActive />
-          <NavLink label="Curations" />
         </div>
       </div>
       <div className="flex items-center gap-6 text-neutral-400">
