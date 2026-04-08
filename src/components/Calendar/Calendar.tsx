@@ -10,7 +10,7 @@ export const Calendar: React.FC = () => {
   const { state, entries, addEntry, nextMonth, prevMonth, selectDate, handleHover } = useCalendar();
   const [flipState, setFlipState] = useState<'idle' | 'flipping-up' | 'dropping-down'>('idle');
   const [flipDir, setFlipDir] = useState<'next' | 'prev'>('next');
-  
+
   const days = getCalendarDays(state.currentDate);
   const currentMonthName = getMonthName(state.currentDate);
 
@@ -19,15 +19,15 @@ export const Calendar: React.FC = () => {
     if (flipState !== 'idle') return;
     setFlipDir(direction);
     setFlipState('flipping-up');
-    
+
     // Stage 1: Wait for 400ms as page physically swings completely upward against screen boundary
     setTimeout(() => {
       if (direction === 'next') nextMonth();
       else prevMonth();
-      
+
       // Stage 2: Suspend transition entirely. Pre-load the new page rotated instantaneously over the wire.
       setFlipState('dropping-down');
-      
+
       // Stage 3: Provide DOM tick clearance, then organically drop the new page via gravity downwards to 0deg.
       requestAnimationFrame(() => {
         setTimeout(() => {
@@ -39,28 +39,28 @@ export const Calendar: React.FC = () => {
 
   const getTransformStyle = (): React.CSSProperties => {
     if (flipState === 'flipping-up') {
-      return { 
-        transform: flipDir === 'next' ? 'perspective(2500px) rotateX(90deg)' : 'perspective(2500px) rotateX(-90deg)', 
-        opacity: 0, 
-        transition: 'all 450ms cubic-bezier(0.4, 0, 1, 1)' 
+      return {
+        transform: flipDir === 'next' ? 'perspective(2500px) rotateX(90deg)' : 'perspective(2500px) rotateX(-90deg)',
+        opacity: 0,
+        transition: 'all 450ms cubic-bezier(0.4, 0, 1, 1)'
       };
     }
     if (flipState === 'dropping-down') {
-      return { 
-        transform: flipDir === 'next' ? 'perspective(2500px) rotateX(-90deg)' : 'perspective(2500px) rotateX(90deg)', 
-        opacity: 0, 
-        transition: 'none' 
+      return {
+        transform: flipDir === 'next' ? 'perspective(2500px) rotateX(-90deg)' : 'perspective(2500px) rotateX(90deg)',
+        opacity: 0,
+        transition: 'none'
       };
     }
-    return { 
-      transform: 'perspective(2500px) rotateX(0deg)', 
-      opacity: 1, 
-      transition: 'all 550ms cubic-bezier(0, 0, 0.2, 1)' 
+    return {
+      transform: 'perspective(2500px) rotateX(0deg)',
+      opacity: 1,
+      transition: 'all 550ms cubic-bezier(0, 0, 0.2, 1)'
     };
   };
 
   return (
-    <div 
+    <div
       className="flex flex-col lg:flex-row h-auto lg:h-full px-4 lg:px-8 pb-8 lg:pb-6 gap-6 lg:gap-8 origin-top transform-gpu"
       style={getTransformStyle()}
     >
@@ -68,27 +68,27 @@ export const Calendar: React.FC = () => {
       <div className="w-full lg:w-[42%] flex-shrink-0 relative shadow-sm h-[220px] sm:h-[300px] lg:h-full rounded-2xl lg:rounded-none overflow-hidden">
         <MonthCover monthName={currentMonthName} />
       </div>
-      
+
       {/* Right Content Stream */}
       <div className="flex-1 flex flex-col pt-1 pr-0 lg:pr-2 overflow-visible lg:overflow-y-auto custom-scrollbar">
-        <CalendarHeader 
+        <CalendarHeader
           title="Timeline"
           subtitle={`${currentMonthName} / curated view`}
           onNext={() => handleFlipTransition('next')}
           onPrev={() => handleFlipTransition('prev')}
         />
         <div className="mb-2">
-          <CalendarGrid 
-            days={days} 
+          <CalendarGrid
+            days={days}
             startDate={state.startDate}
             endDate={state.endDate}
             hoverDate={state.hoverDate}
-            onSelectDate={selectDate} 
+            onSelectDate={selectDate}
             onHoverDate={handleHover}
           />
         </div>
-        
-        <NotesPanel 
+
+        <NotesPanel
           entries={entries}
           startDate={state.startDate}
           endDate={state.endDate}

@@ -11,7 +11,7 @@ export default function App() {
         backgroundSize: '20px 20px'
       }}
     >
-      <div className="w-full max-w-[1100px] min-h-screen lg:min-h-0 lg:h-full flex flex-col lg:flex-row shadow-2xl lg:rounded-[32px] bg-white lg:ring-8 lg:ring-white/5 overflow-hidden">
+      <div className="w-full max-w-[1000px] min-h-screen lg:min-h-0 lg:h-full flex flex-col lg:flex-row shadow-2xl lg:rounded-[32px] bg-white lg:ring-8 lg:ring-white/5 overflow-hidden">
         <div className="flex-1 flex flex-col min-w-0 bg-white">
           <TopNav />
           <div className="flex-1 overflow-hidden relative">
