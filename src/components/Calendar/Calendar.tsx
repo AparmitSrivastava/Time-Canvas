@@ -61,16 +61,16 @@ export const Calendar: React.FC = () => {
 
   return (
     <div 
-      className="flex h-full px-8 pb-6 gap-8 origin-top transform-gpu"
+      className="flex flex-col lg:flex-row h-auto lg:h-full px-4 lg:px-8 pb-8 lg:pb-6 gap-6 lg:gap-8 origin-top transform-gpu"
       style={getTransformStyle()}
     >
-      {/* Left huge illustration */}
-      <div className="w-[42%] flex-shrink-0 relative shadow-sm h-full">
+      {/* Left huge illustration / Top hero image on mobile */}
+      <div className="w-full lg:w-[42%] flex-shrink-0 relative shadow-sm h-[220px] sm:h-[300px] lg:h-full rounded-2xl lg:rounded-none overflow-hidden">
         <MonthCover monthName={currentMonthName} />
       </div>
       
       {/* Right Content Stream */}
-      <div className="flex-1 flex flex-col pt-1 pr-2 overflow-y-auto custom-scrollbar">
+      <div className="flex-1 flex flex-col pt-1 pr-0 lg:pr-2 overflow-visible lg:overflow-y-auto custom-scrollbar">
         <CalendarHeader 
           title="Timeline"
           subtitle={`${currentMonthName} / curated view`}

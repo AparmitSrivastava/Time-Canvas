@@ -31,10 +31,10 @@ export const NotesPanel: React.FC<NotesPanelProps> = ({
         />
 
         {/* Dual Context Pillars matching visual baseline rules */}
-        <div className="flex gap-4 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-4 items-stretch">
           
           {/* Notes Pipeline */}
-          <div className="w-1/2 flex flex-col gap-3 pr-1">
+          <div className="w-full lg:w-1/2 flex flex-col gap-3 pr-0 lg:pr-1">
             {notes.length === 0 ? (
               <p className="text-[8px] font-bold uppercase tracking-widest text-neutral-400 p-2 opacity-60">
                 No notes found. Select a date above to spin up a curation thought.
@@ -45,7 +45,7 @@ export const NotesPanel: React.FC<NotesPanelProps> = ({
           </div>
 
           {/* Milestones Dashboard */}
-          <div className="w-1/2 bg-[#F0F2F5] rounded-xl py-4 px-5 border border-[#EAECEF] flex flex-col shadow-inner">
+          <div className="w-full lg:w-1/2 bg-[#F0F2F5] rounded-xl py-4 px-5 border border-[#EAECEF] flex flex-col shadow-inner">
             <p className="text-[8px] font-bold tracking-[0.2em] text-[#A6ADB5] uppercase mb-4 text-center shadow-sm">
               Upcoming <br/> Milestones
             </p>

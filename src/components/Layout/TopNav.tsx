@@ -3,10 +3,10 @@ import { Search, Settings, User } from 'lucide-react';
 
 export const TopNav: React.FC = () => {
   return (
-    <div className="flex items-center justify-between px-10 pt-6 pb-2 bg-white rounded-tr-[32px] flex-shrink-0">
-      <div className="flex items-end gap-10">
-        <h1 className="text-[26px] font-serif tracking-tight text-neutral-900 leading-none">Time Canvas</h1>
-        <div className="flex gap-8 text-[11px] font-semibold tracking-wider text-neutral-400 mb-1 relative top-[1px]">
+    <div className="flex flex-col lg:flex-row items-center justify-between px-4 lg:px-10 pt-4 lg:pt-6 pb-2 lg:bg-white lg:rounded-tr-[32px] flex-shrink-0 gap-4 lg:gap-0">
+      <div className="flex flex-col lg:flex-row items-center lg:items-end gap-3 lg:gap-10 w-full lg:w-auto">
+        <h1 className="text-[22px] lg:text-[26px] font-serif tracking-tight text-neutral-900 leading-none">Time Canvas</h1>
+        <div className="flex gap-6 lg:gap-8 text-[11px] font-semibold tracking-wider text-neutral-400 mb-1 lg:relative lg:top-[1px] justify-center lg:justify-start w-full lg:w-auto">
           <NavLink label="Gallery" />
           <NavLink label="Moments" isActive />
           <NavLink label="Curations" />

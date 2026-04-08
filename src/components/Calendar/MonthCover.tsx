@@ -44,7 +44,9 @@ export const MonthCover: React.FC<MonthCoverProps> = ({ monthName }) => {
   }, [targetImage]);
 
   return (
-    <div className="w-full h-full relative overflow-hidden bg-[#eec89e] rounded-md shadow-inner transition-colors duration-1000 ease-in-out">
+    <div className="w-full h-full rounded-2xl lg:rounded-none lg:rounded-tl-[32px] lg:rounded-bl-[32px] overflow-hidden relative shadow-lg group">
+      {/* Skeleton / Initial Background */}
+      <div className="absolute inset-0 bg-[#E8EBED]" />
       {/* Background Cover Image Handler */}
       <img 
         key={loadedImage}
@@ -57,18 +59,18 @@ export const MonthCover: React.FC<MonthCoverProps> = ({ monthName }) => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#1E5C88]/90 via-[#1E5C88]/30 to-transparent h-[50%] mix-blend-multiply opacity-90 transition-opacity duration-1000" />
       
       {/* Dynamic Title block */}
-      <div className="absolute top-16 left-0 right-0 text-center text-white z-10">
-        <h2 className="text-[52px] font-serif tracking-tight mb-2 leading-none">{monthName}</h2>
-        <p className="text-[9px] font-bold tracking-[0.25em] uppercase text-white/90">{currentTagline}</p>
+      <div className="absolute top-6 sm:top-16 left-0 right-0 text-center text-white z-10">
+        <h2 className="text-[34px] sm:text-[52px] font-serif tracking-tight mb-1 sm:mb-2 leading-none">{monthName}</h2>
+        <p className="text-[7.5px] sm:text-[9px] font-bold tracking-[0.25em] uppercase text-white/90">{currentTagline}</p>
       </div>
 
       {/* Bottom Quote Box */}
-      <div className="absolute bottom-8 left-6 right-6">
-        <div className="bg-[#4E6139]/80 backdrop-blur-md p-6 shadow-lg border-l-2 border-[#A8BC8D]">
-          <p className="text-[13px] font-serif italic mb-3 leading-relaxed text-white/95">
+      <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6">
+        <div className="bg-[#4E6139]/80 backdrop-blur-md p-4 sm:p-6 shadow-lg border-l-2 border-[#A8BC8D]">
+          <p className="text-[11px] sm:text-[13px] font-serif italic mb-2 sm:mb-3 leading-relaxed text-white/95">
             "{currentQuote}"
           </p>
-          <p className="text-[8px] font-bold text-white/60 uppercase tracking-widest">- Editorial Curators</p>
+          <p className="text-[7px] sm:text-[8px] font-bold text-white/60 uppercase tracking-widest">- Editorial Curators</p>
         </div>
       </div>
     </div>
